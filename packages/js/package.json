@@ -1,0 +1,61 @@
+{
+  "name": "@mboka/core",
+  "version": "0.0.0",
+  "description": "Local data and helpers for Congo-Brazzaville: +242 phone numbers, administrative divisions, FCFA amounts.",
+  "keywords": [
+    "congo",
+    "brazzaville",
+    "cg",
+    "phone",
+    "fcfa",
+    "xaf",
+    "geo",
+    "africa"
+  ],
+  "license": "MIT",
+  "author": "Euloge and contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mboka-dev/core.git",
+    "directory": "packages/js"
+  },
+  "homepage": "https://github.com/mboka-dev/core#readme",
+  "bugs": "https://github.com/mboka-dev/core/issues",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.build.json && tsc -p tsconfig.cjs.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json',JSON.stringify({type:'commonjs'}))\"",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test \"test/*.test.mjs\"",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "typescript": "^5.9.3"
+  }
+}
