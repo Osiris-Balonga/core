@@ -1,0 +1,4 @@
+# Map every Git identity a contributor uses to one canonical identity.
+# Format: Canonical Name <canonical@email> Other Name <other@email>
+# Example:
+# Jane Doe <jane@example.org> jdoe-laptop <jdoe@old-mail.example>
